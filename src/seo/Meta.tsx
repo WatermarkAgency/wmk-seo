@@ -11,9 +11,9 @@ export interface SeoMetaProps {
   title: string;
   path?: string; // path to page after url but before slug
   slug: string;
-  ogImageUrl?: string; // for Facebook's Open Graph Protocol
-  twitterImageUrl?: string; // for sharing on twitter
-  twitterHandle?: string; // site twitter Id
+  ogImageUrl?: string | null; // for Facebook's Open Graph Protocol
+  twitterImageUrl?: string | null; // for sharing on twitter
+  twitterHandle?: string | null; // site twitter Id
   baseUrl: string; // main url for production site (w/ protocol, w/o slash)
   siteTitle: string; // main site or company name
   fullPath?: string; // full path to page
@@ -79,20 +79,24 @@ export const Meta = ({
       content: description
     }
   ];
-  if (ogImageUrl !== ``) {
+  if (typeof ogImageUrl === "string" && ogImageUrl !== ``) {
     metaProps.push({
       property: `og:image`,
       content: sanitizeSocialImageUrl(ogImageUrl)
     });
+  } else if (typeof ogImageUrl === null) {
+      return null
   } else {
     console.log("No Open Graph Image set in WmkSeo.Meta");
   }
 
-  if (twitterImageUrl !== ``) {
+  if (typeof twitterImageUrl === "string" && twitterImageUrl !== ``) {
     metaProps.push({
       name: `twitter:image`,
       content: sanitizeSocialImageUrl(twitterImageUrl)
     });
+  } else if (typeof twitterImageUrl === null) {
+    return null
   } else {
     console.log("No Twitter Image set in WmkSeo.Meta");
   }
@@ -102,6 +106,8 @@ export const Meta = ({
       name: `twitter:site`,
       content: twitterHandle
     });
+  } else if (typeof twitterHandle === null) {
+    return null
   } else {
     console.log("No Twitter Handle set in WmkSeo.Meta");
   }
