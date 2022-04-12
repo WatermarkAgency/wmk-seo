@@ -79,7 +79,7 @@ export const Meta = ({
       content: description
     }
   ];
-  if (ogImageUrl !== ``) {
+  if (typeof ogImageUrl === "string" && ogImageUrl !== ``) {
     metaProps.push({
       property: `og:image`,
       content: sanitizeSocialImageUrl(ogImageUrl)
@@ -88,7 +88,7 @@ export const Meta = ({
     console.log("No Open Graph Image set in WmkSeo.Meta");
   }
 
-  if (twitterImageUrl !== ``) {
+  if (typeof twitterImageUrl === "string" && twitterImageUrl !== ``) {
     metaProps.push({
       name: `twitter:image`,
       content: sanitizeSocialImageUrl(twitterImageUrl)
