@@ -1,6 +1,6 @@
 {
   "name": "wmk-seo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "WMK SEO Component on Typescript",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
