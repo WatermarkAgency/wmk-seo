@@ -84,6 +84,7 @@ export const Meta = ({
       property: `og:image`,
       content: sanitizeSocialImageUrl(ogImageUrl)
     });
+  } else if (ogImageUrl === ``) {
   } else {
     console.log("No Open Graph Image set in WmkSeo.Meta");
   }
@@ -93,6 +94,7 @@ export const Meta = ({
       name: `twitter:image`,
       content: sanitizeSocialImageUrl(twitterImageUrl)
     });
+  } else if (twitterImageUrl === ``) {
   } else {
     console.log("No Twitter Image set in WmkSeo.Meta");
   }
@@ -102,6 +104,7 @@ export const Meta = ({
       name: `twitter:site`,
       content: twitterHandle
     });
+  } else if (twitterHandle === ``) {
   } else {
     console.log("No Twitter Handle set in WmkSeo.Meta");
   }
