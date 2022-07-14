@@ -109,6 +109,14 @@ export const Meta = ({
     console.log("No Twitter Handle set in WmkSeo.Meta");
   }
 
+  const isValidTitle = (title: string) => {
+    if (title && title !== " ") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <Helmet
       htmlAttributes={{
@@ -117,11 +125,18 @@ export const Meta = ({
       link={[
         {
           rel: "canonical",
-          href: `${baseUrl}${pathVar}${slugVar}`
+          href: `${baseUrl}${pathVar}${slugVar}`,
+          title: "link"
         }
       ]}
       title={title}
-      titleTemplate={`%s | ${siteTitle}`}
+      titleTemplate={
+        isValidTitle(title) && isValidTitle(siteTitle)
+          ? `%s | ${siteTitle}`
+          : isValidTitle(title)
+          ? ``
+          : siteTitle
+      }
       meta={metaProps}
     />
   );
