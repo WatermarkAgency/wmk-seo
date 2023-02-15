@@ -3,7 +3,7 @@
 #### WmkSeo.Meta
 
 ```jsx
-WmkSeo.Meta = ({description, lang, title, path, slug, ogImage, twitterImage, twitterHandle, baseUrl, siteTitle})...
+WmkSeo.Meta = ({description, lang, title, path, slug, ogImage, twitterImage, twitterHandle, baseUrl, siteTitle, isSiteTitleDisplayed})...
 ```
 
 Assists with page SEO meta data (including open graph and twitter image).
