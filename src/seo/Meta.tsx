@@ -16,6 +16,7 @@ export interface SeoMetaProps {
   twitterHandle?: string; // site twitter Id
   baseUrl: string; // main url for production site (w/ protocol, w/o slash)
   siteTitle: string; // main site or company name
+  isSiteTitleDisplayed: boolean; // determines if the site title will be displayed after the page title
   fullPath?: string; // full path to page
 }
 
@@ -29,7 +30,8 @@ export const Meta = ({
   twitterImageUrl = ``,
   twitterHandle = ``,
   baseUrl = ``,
-  siteTitle
+  siteTitle,
+  isSiteTitleDisplayed = true
 }: SeoMetaProps) => {
   const slugVar = !slug || slug === "/" ? "" : slug;
   const pathVar = !slug || slug === "/" ? "" : path;
@@ -121,7 +123,7 @@ export const Meta = ({
         }
       ]}
       title={title}
-      titleTemplate={`%s | ${siteTitle}`}
+      titleTemplate={isSiteTitleDisplayed ? `%s | ${siteTitle}` : `%s`}
       meta={metaProps}
     />
   );
